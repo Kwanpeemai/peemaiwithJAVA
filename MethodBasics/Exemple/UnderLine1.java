@@ -1,4 +1,4 @@
-package String.Method Basics.Exemple;
+package String.MethodBasics.Exemple;
 
 import java.util.Scanner;
 
