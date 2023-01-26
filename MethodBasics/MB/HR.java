@@ -41,7 +41,7 @@ class Employee {
     boolean workOperation(int m) {
         if (m <= 0) {
             System.out.println("Invalid hour for operation work");
-            
+        
             return false;
         } else {
             opWork += m;
