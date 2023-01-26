@@ -41,5 +41,5 @@ public class MakeCookie {
         int butter = scan.nextInt();
         MakeCookie MK = new MakeCookie();
         MK.calCookieBags(flour, butter);
-
-} }
+} 
+}
