@@ -60,7 +60,7 @@ public class HousePrice2 {
         int maxPrice = sc.nextInt();
         int minArea = sc.nextInt();
         for (int i=0;i<N;i++){
-            home[i].computePrice(N, i, i, N, i, maxPrice, minArea);
+            //home[i].computePrice(N, i, i, N, i, maxPrice, minArea); เรียกใช้ยังไง
         }
 
     }
