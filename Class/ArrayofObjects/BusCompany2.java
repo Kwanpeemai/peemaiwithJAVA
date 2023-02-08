@@ -2,19 +2,21 @@ package Class.ArrayofObjects;
 
 import java.util.Scanner;
 
-class Bus1 {
+class Bus {
     public String id;
     public int type;
     public int seats;
-    public int book;
-
-    Bus1(String id, int type, int seats) {
+    public int capacity;
+    boolean status;
+    
+    Bus(String id, int type, int capacity){
         this.id = id;
         this.type = type;
-        this.seats = seats;
-        book = 0;
+        this.capacity = capacity;
+        seats = 0;
+        status = true;
     }
-
+    
     void printStats(){
         System.out.println(id);
         if (type == 1){
@@ -24,52 +26,50 @@ class Bus1 {
         } else {
             System.out.println("VIP");
         }
+        System.out.println(seats + " " + capacity);
+        System.out.println((status) ? "Active" : "Inactive");
     }
-
+    
     boolean reserve(int k){
-        if (k < seats){
-            if (k>0){
-            book += k;    
-            }
-            System.out.println(book + " " + seats);
-            System.out.println("Active");
-            return true;
-        } else {
-            System.out.println(book + " " + seats);
-            System.out.println("Inactive");
+        if(k + seats > capacity || k < 0 || !status){
             return false;
+        }
+        else {
+            seats += k;
+            return true;
         }
     }
     
     void sendToRepair(){
-        System.out.println(book + " " + seats);
-        System.out.println("Inactive");
+        status = false;
     }
+    
     void backToService(){
-        System.out.println(book + " " + seats);
-        System.out.println("Active");
+        status = true;
     }
 }
 
-    public class BusCompany2 {
-        public static void main(String[] args) {
-            Scanner sc = new Scanner(System.in);
-            String id = sc.next();
-            int type = sc.nextInt();
-            int seats = sc.nextInt();
-            Bus1 b = new Bus1(id, type, seats);
+public class BusCompany2 {
 
-            int N = sc.nextInt();
-            for (int i = 0; i < N; ++i) {
-                int P = sc.nextInt();
-                int K = sc.nextInt();
-                b.printStats();
-                if(P==1) 
-                    b.reserve(K);
-                else if(P==2)
-                    b.sendToRepair();
-                else if(P==3)
-                    b.backToService();
+    public static void main(String[] args) {
+        Scanner scan = new Scanner(System.in);
+        String id = scan.next();
+        int type = scan.nextInt();
+        int seats = scan.nextInt();
+        Bus b = new Bus(id, type, seats);
+
+        int N = scan.nextInt();
+        for (int i = 0; i < N; ++i) {
+            int P = scan.nextInt();
+            int K = scan.nextInt();
+            if (P == 1) {
+                b.reserve(K);
+            } else if (P == 2) {
+                b.sendToRepair();
+            } else if (P == 3) {
+                b.backToService();
             }
+            b.printStats();
         }
     }
+}
