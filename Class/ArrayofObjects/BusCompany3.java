@@ -5,7 +5,7 @@ import java.util.Scanner;
 class Bus3 {
     public String id;
     public int type;
-    public int seats;
+    private int seats;
     private int capacity;
     private boolean status;
 
@@ -31,12 +31,12 @@ class Bus3 {
     }
 
     boolean reserve(int k){
-        if(k + capacity > seats || k < 0 || !status){
-            return false;
+        if(k + capacity <= seats && k > 0 && status){
+            capacity += k;
+            return true;
         }
         else {
-            seats += k;
-            return true;
+            return false;
         }
     }
     
