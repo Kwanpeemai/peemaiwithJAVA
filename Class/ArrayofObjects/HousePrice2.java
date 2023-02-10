@@ -1,6 +1,7 @@
 package Class.ArrayofObjects;
 
 import java.util.Scanner;
+
 class House {
     public int landSize;
     public int quality;
@@ -8,42 +9,22 @@ class House {
     public int houseArea;
     public int price;
 
+    int computerPrice (int landSize, int quality, int floors, int houseArea){
+        int qualprice = 0;
+        if (quality == 1) qualprice = houseArea*10000;
+        else if (quality == 2) qualprice = houseArea * 8000;
+        else if (quality == 3) qualprice = houseArea * 5000;
+        return (landSize * 10000) + qualprice + (200000 * (floors-1));
+    }
+
     House (int landSize, int quality, int floors, int houseArea){
         this.landSize = landSize;
         this.quality = quality;
         this.floors = floors;
         this.houseArea = houseArea;
-        price = 0;
+        price = computerPrice(landSize, quality, floors, houseArea);
     }
-
-    void computePrice (int N, int landSize, int quality, int floors, int houseArea, int maxPrice, int minArea){
-        boolean check = false;
-        for (int i=0;i<N;i++){
-        price += 10000*landSize;
-        if (quality == 1){
-         price += 10000*houseArea;
-        }
-        if (quality == 2){
-         price += 8000*houseArea;
-        }
-        if (quality == 3){
-         price += 5000*houseArea;
-        }
-        if (floors>1){
-         price += 200000*(floors-1);
-         }
-        if (maxPrice<=price && minArea<=houseArea){
-            System.out.println(landSize + " " +
-            quality + " " + floors + " " +houseArea + " " + price);
-            check = true;
-        }
-        }
-        if (!check){
-            System.out.println("none");
-        }
     }
-
-}
 
 public class HousePrice2 {
     public static void main(String[] args) {
@@ -59,8 +40,17 @@ public class HousePrice2 {
         }
         int maxPrice = sc.nextInt();
         int minArea = sc.nextInt();
+        int count = 0;
         for (int i=0;i<N;i++){
-            //home[i].computePrice(N, i, i, N, i, maxPrice, minArea); เรียกใช้ยังไง
+            House homehome = home[i];
+            if (maxPrice >= homehome.price && minArea <= homehome.houseArea){
+                System.out.println(homehome.landSize + " " +
+                homehome.quality + " " + homehome.floors + " " +homehome.houseArea + " " + homehome.price);
+                count++;
+            }
+        }
+        if (count == 0){
+            System.out.println("none");
         }
 
     }
