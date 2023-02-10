@@ -1,4 +1,4 @@
-package Inheritance;
+package Class.ArrayofObjects;
 
 import java.util.Scanner;
 
