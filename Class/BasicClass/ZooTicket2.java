@@ -2,63 +2,74 @@ package Class.BasicClass;
 
 import java.util.Scanner;
 
-class ZooTicket {
+class ZooTicket1 {
     private String name;
-    private int price;
-    private boolean ride;
-    private boolean seal;
-    private boolean tiger;
+    private int sumR;
+    private int sumS;
+    private int sumT;
 
-    ZooTicket(String name) {
+    ZooTicket1(String name) {
         this.name = name;
-        ride = false;
-        seal = false;
-        tiger = false;
-        price = 100;
+        sumR = 0;
+        sumS = 0;
+        sumT = 0;
     }
 
-    boolean bookRide() {
-        seal = true;
+    void bookRide() {
+        sumR += 40;
     }
 
     void bookSealShow() {
-        seal = true;
+        sumS += 50;
     }
 
     void bookTigerShow() {
-        tiger = true;
+        sumT += 65;
 
     }
 
     void summarize() {
+        int sum = 100;
         System.out.println(name);
-        if (ride) {
+        if (sumR == 40) {
             System.out.println("Ride");
-            price += 40;
+            sum += sumR;
         }
-        if (seal) {
+        if (sumS == 50) {
             System.out.println("Seal");
-            price += 50;
+            sum += sumS;
         }
-        if (tiger) {
+        if (sumT == 65) {
             System.out.println("Tiger");
-            price += 65;
+            sum += sumT;
         }
-        System.out.println(price);
+        System.out.println(sum);
     }
 
-        boolean useRide() {
-            ride = false;
-            return false;
+        String useRide() {
+            if (sumR == 40){
+                sumR = 0;
+                return "okay\ntrue";
+            } else {
+                return "no\nfalse";
+            }
         }
 
-        boolean enterSealShow() {
-            seal = false;
-            return false;
+        String enterSealShow() {
+            if (sumS == 50){
+                sumS = 0;
+                return "okay\ntrue";
+            } else {
+                return "no\nfalse";
+            }
         }
-        boolean enterTigerShow() {
-            tiger = false;
-            return false;
+        String enterTigerShow() {
+            if (sumT == 65){
+                sumT = 0;
+                return "okay\ntrue";
+            } else {
+                return "no\nfalse";
+            }
         }
 }
 
@@ -66,7 +77,7 @@ public class ZooTicket2 {
   public static void main(String[] args) {
     Scanner scan = new Scanner(System.in);
     String name = scan.next();
-    ZooTicket ticket = new ZooTicket(name);
+    ZooTicket1 ticket = new ZooTicket1(name);
     while(true) {
       int service1 = scan.nextInt();
       if(service1 == 0){
@@ -86,15 +97,15 @@ public class ZooTicket2 {
     
     int Q = scan.nextInt();
     for (int i=0;i<Q;i++){
-    int service2 = scan.nextInt();
-        if (service2 == 1){
-            ticket.useRide();
+    int service1 = scan.nextInt();
+        if (service1 == 1){
+           System.out.println(ticket.useRide());
         }
-        if (service2 == 2){
-            ticket.enterSealShow();
+        if (service1 == 2){
+            System.out.println(ticket.enterSealShow());
         }
-        if (service2 == 3){
-            ticket.enterTigerShow();
+        if (service1 == 3){
+            System.out.println(ticket.enterTigerShow());
         }
     }
 }
