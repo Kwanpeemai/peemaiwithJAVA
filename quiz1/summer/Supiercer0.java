@@ -6,36 +6,34 @@ public class Supiercer0 {
     public static void main(String[] args) {
         Scanner sc = new Scanner(System.in);
         int N = sc.nextInt();
-        int first = 0;
-        int second = 0;
-        int third = 0;
-        int tail = 0;
-        int fake = 0;
-        int classfake = 0;
-        for (int i=0;i<N;i++){
-            int ticket = sc.nextInt();
-            if ((ticket/100)%10==0){
-                System.out.println("Wilkorn Only");
-            } else if ((ticket/100)%10==1){
-                first++;
-            } else if ((ticket/100)%10==2){
-                second++;
-            } else if ((ticket/100)%10==3){
-                third++;
-            } else if ((ticket/100)%10==4){
-                tail++;
-            } else {
-                classfake = (ticket/100)%10;
+        int[] ticket = new int[10];
+        boolean fake = false;
+        for (int i = 0; i < N; i++) {
+            int id = sc.nextInt() % 1000 / 100;
+            if (id == 0) {
+                System.out.println("Wikorn Only");
+            }
+            if (id > 4) {
                 System.out.println("No Permission");
-                fake++;
+                fake = true;
+            }
+            ticket[id]++;
+        }
+        System.out.println("First Class " + ticket[1]);
+        System.out.println("Second Class " + ticket[2]);
+        System.out.println("Third Class " + ticket[3]);
+        System.out.println("The Tail " + ticket[4]);
+        if (fake) {
+            System.out.println("###########");
+            System.out.println("Fake Tickets");
+            for (int i = 5; i < 10; i++) {
+                if (ticket[i] != 0) {
+                    System.out.println("Class " + i + " " + ticket[i]);
+
+                }
+
             }
         }
-        System.out.println("First Class " + first);
-        System.out.println("Second Class " + second);
-        System.out.println("Third Class " + third);
-        System.out.println("The Tail " + tail);
-        System.out.println("###########");
-        System.out.println("Fake Tickets");
-        System.out.println("Class " + classfake + " " + fake);
+
     }
 }
