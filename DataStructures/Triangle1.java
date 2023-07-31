@@ -5,36 +5,36 @@ package DataStructures;
         private String title;
         private boolean equalSide;
 
-        Triangle(){
+        public Triangle(){
             base = 1;
             height = 1;
             title = " ";
             equalSide = false;
         }
 
-        Triangle (double base, double height, String title){
+        public Triangle (double base, double height, String title){
             this.base = base;
             this.height = height;
             this.title = title;
         }
 
-        Triangle (double base, double height){
+        public Triangle (double base, double height){
             this.base = base;
             this.height = height;
         }
 
-        Triangle (double side, String title){
+        public Triangle (double side, String title){
             base = side;
             height = side;
             this.title = title;
         }
 
-        Triangle (double side){
+        public Triangle (double side){
             base = side;
             height = side;
         }
 
-        Triangle (String title){
+        public Triangle (String title){
             this.title = title;
         }
 
